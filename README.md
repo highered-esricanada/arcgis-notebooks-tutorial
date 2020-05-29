@@ -68,16 +68,16 @@ The following table summarises the required folders and files provided with this
 | `arcgis_notebooks/` | Top folder |	
 | `+- documents/` | Related tutorial documents |
 | `+- hurricane_analysis/`	| Sample Python notebooks - hurricane track analysis |
-| `|  +- data/` | Pre-packaged sample data and required files |
-| `|  +- part1_prepare_hurricane_data.ipynb` | Part 1: Data wrangling
-| `|  +- part2_explore_hurricane_data.ipynb` | Part 2: Data exploration and analysis
-| `|  +- part3_analyze_hurricane_data.ipynb` | Part 3: Statistical correlation analysis
+| `\|  +- data/` | Pre-packaged sample data and required files |
+| `\|  +- part1_prepare_hurricane_data.ipynb` | Part 1: Data wrangling
+| `\|  +- part2_explore_hurricane_data.ipynb` | Part 2: Data exploration and analysis
+| `\|  +- part3_analyze_hurricane_data.ipynb` | Part 3: Statistical correlation analysis
 | `+- notebook_basics/` | Sample Python notebooks |
-| `|  +- data/` | Pre-packaged sample data and required files |
-| `|  +- starter_notebook.ipynb` | Basic overview of working with Jupyter Notebook |
-| `|  +- notebook_basics.aprx` | ArcGIS Pro project configured for working with the `arcgispro_notebook.ipynb` notebook |
-| `|  +- arcgispro_notebook.ipynb` | Overview of notebooks integrated into ArcGIS Pro |
-| `|  +- hosted_notebook.ipynb` | Overview of notebooks in ArcGIS Online/Enterprise |
+| `\|  +- data/` | Pre-packaged sample data and required files |
+| `\|  +- starter_notebook.ipynb` | Basic overview of working with Jupyter Notebook |
+| `\|  +- notebook_basics.aprx` | ArcGIS Pro project configured for working with the `arcgispro_notebook.ipynb` notebook |
+| `\|  +- arcgispro_notebook.ipynb` | Overview of notebooks integrated into ArcGIS Pro |
+| `\|  +- hosted_notebook.ipynb` | Overview of notebooks in ArcGIS Online/Enterprise |
 
 
 ## Part A: Getting Started
