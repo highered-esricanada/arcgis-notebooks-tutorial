@@ -1,5 +1,5 @@
 [![Esri Canada](images/ER_EN.png "Esri Canada")](https://hed.esri.ca)
-# Working with Python Notebooks
+# Python for ArcGIS - Working with ArcGIS Notebooks
 #### Tutorial for ArcGIS
 
 ---
@@ -33,9 +33,9 @@ The following time is required to complete this tutorial:
 ### Materials Required
 
 #### Technology:
-* *Required*: ArcGIS Pro 2.5+
+* *Required*: ArcGIS Pro 2.7+ recommended (2.5+ minimum)
 * *Recommended*: ArcGIS Online subscription account with permissions to use Notebooks and GeoEnrichment
-* *Optional*: Notebook Server for ArcGIS Enterprise 10.7.1+ ([installation guide for administrators](https://enterprise.arcgis.com/en/notebook/latest/install/windows/welcome-to-the-arcgis-notebook-server-install-guide.htm))
+* *Optional*: Notebook Server for ArcGIS Enterprise 10.8.1+ ([installation guide for administrators](https://enterprise.arcgis.com/en/notebook/latest/install/windows/welcome-to-the-arcgis-notebook-server-install-guide.htm))
 
 #### Data:
 * Sample data for this tutorial are included as part of the download.
@@ -46,14 +46,15 @@ The following time is required to complete this tutorial:
 
 ### Production Date
 The Education and Research Group at Esri Canada makes every effort to present accurate and reliable information. The Web sites and URLs used in this tutorial are from sources that were current at the time of production, but are subject to change without notice to Esri Canada.
-* Production Date: May 2020
+* Production Date: January 2021
 
 ## Background Information 
-The Python programming language was first introduced to the ArcGIS community in 2004 with the release of version 9.0, as one of the scripting languages that provides access to the ArcGIS geoprocessing framework.  Since then, Python has become the language of choice for scripting and automation among ArcGIS users, and indeed many other applications .  At the same time, the ecosystem of Python libraries has continued to grow (e.g., NumPy or SciPy for advanced mathematical and scientific processing, or more specialized modules for integrating deep learning and machine learning tools such as Tensorflow).  With the introduction of the notebook interface, initially using IPython, and more recently with the Jupyter Notebook server, the Python language and specifically Python Notebooks have become highly valuable tools for data science.
+The Python programming language was first introduced to the ArcGIS community in 2004, with the release of ArcGIS version 9.0, as one of the scripting languages that provides access to the ArcGIS geoprocessing framework.  Since then, Python has become the language of choice for scripting and automation among ArcGIS users, and indeed many other applications.  At the same time, the ecosystem of Python libraries has continued to grow (e.g., NumPy or SciPy for advanced mathematical and scientific processing, or more specialized modules for integrating deep learning and machine learning tools such as Tensorflow).  With the introduction of the notebook interface, initially using IPython, and more recently with the Jupyter Notebook server, the Python language and specifically Python Notebooks have become highly valuable tools for data science.
 
-While using Python notebooks with ArcGIS has been possible for many years, it has become a much more integrated experience with the release of the ArcGIS API for Python in 2016, and more recently Notebook Server for ArcGIS Enterprise (2019), ArcGIS Notebooks in ArcGIS Pro (2020), and ArcGIS Notebooks in ArcGIS Online (currently in beta).
+While using Python notebooks with ArcGIS has been possible for many years, it has become a much more integrated experience with the release of the ArcGIS API for Python in 2016, and more recently Notebook Server for ArcGIS Enterprise (10.7.1 released in 2019), in ArcGIS Notebooks in ArcGIS Pro (starting in 2020 with version 2.5) and in ArcGIS Online (officially released in 2020).
 
 By completing this tutorial, you will learn how to set up and interact with ArcGIS Notebooks, and how to load, analyze, and visualize GIS datasets in a Python Notebook to create a compelling document that communicates your GIS data processes or data science workflows for other developers.
+
 
 #### References and Reading
 * Introducing ArcGIS Notebooks
@@ -82,28 +83,34 @@ The following table summarises the required folders and files provided with this
 
 ## Part A: Getting Started
 First, ensure that you have the following software installed:
-* ArcGIS Pro 2.5+
-* If necessary: obtain a trial copy of ArcGIS Pro (https://www.esri.com/en-us/arcgis/trial)
-* Optional: authorize ArcGIS Pro for offline use (https://pro.arcgis.com/en/pro-app/get-started/start-arcgis-pro-with-a-named-user-license.htm#ESRI_SECTION1_15AD453E27C446CE9B51D45C021E8067)
+* ArcGIS Pro 2.7+ recommended (2.5+ minimum)
+  * If necessary: obtain a trial copy of ArcGIS Pro (https://www.esri.com/en-us/arcgis/trial)
+  * Optional: authorize ArcGIS Pro for offline use (https://pro.arcgis.com/en/pro-app/get-started/start-arcgis-pro-with-a-named-user-license.htm#ESRI_SECTION1_15AD453E27C446CE9B51D45C021E8067)
 
-With ArcGIS Pro 2.5 installed and licensed, prepare a clone of the default Python environment installed with ArcGIS Pro. To do this use the following steps:
+With ArcGIS Pro 2.7 installed and licensed, prepare a clone of the default Python environment installed with ArcGIS Pro. To do this use the following steps:
 1. Open the ArcGIS Pro settings (or when working on a project in Pro, click the Project tab)
 1. Select Python in the left-hand menu to access the Python Package Manger interface
 1. Click Manage Environments
 1. Click the clone button next to the default environment named arcgispro-py3
 1. Wait for the clone operation to complete, ensure that your new cloned environment is set as active, and close ArcGIS Pro.
-1. Now that you have your ArcGIS Pro Python environment cloned, you are free to modify it as you see fit.  This tutorial will make use of several packages that are not installed by default.  To install these, open the Python Command Prompt installed with ArcGIS Pro (Windows Start Menu > ArcGIS > Python Command Prompt).  When the command prompt opens, you should see the name of the Python environment you just cloned in ArcGIS Pro to the left of the cursor and current path.  Ensure your PC is connected to the Internet, then execute the following two commands:
+1. Now that you have a cloned copy of the default ArcGIS Pro Python environment, you are free to modify it as you see fit.  This tutorial will make use of several packages that are not installed by default.  To install these, open the Python Command Prompt installed with ArcGIS Pro (Windows Start Menu > ArcGIS > Python Command Prompt).  When the command prompt opens, you should see the name of the Python environment you just cloned in ArcGIS Pro to the left of the cursor and current path.  Ensure your PC is connected to the Internet, execute the following command, answer 'y' when prompted to confirm the installation:
 
 ```py
-conda install dask graphviz python-graphviz seaborn
-conda install -c conda-forge jupyter_contrib_nbextensions jupyter_nbextensions_configurator
+conda install dask python-graphviz seaborn 
 ```
 
-The first command above will install a set of packages that are required for some of the sample notebooks included in this tutorial.  The second command will install some additional packages that enable you to configure and use extensions that enhance the Jupyter Notebook system.
+Executing this command will install additional open source packages that are used in some of the sample notebooks included in this tutorial.
 
-This installation process will take some time to complete, depending on your Internet connection and PC’s hardware capacity.  If you see any errors/warnings, you can safely ignore them. ***Do not close the command prompt until the process is completed***, and the cursor has returned.  When the process is completed, you can open the Jupyter Notebook server.
+*Note: if you are working with ArcGIS Pro version 2.5 or 2.6, you can optionally execute the following commands to install additional packages that enable additional configuration options in the Python Notebook environment:*
 
-7. Once you have completed the installation of the above packages, you will want to change the current drive and directory to the folder on your hard drive that contains the files for this tutorial copied earlier, and then launch the Jupyter Notebook server.  You can do this with the following commands (adjust the drive letter and path in the first two commands as appropriate):
+```py
+conda install jupyter_contrib_nbextensions
+conda install jupyter_nbextensions_configurator 
+```
+
+This installation process will take some time to complete, depending on your Internet connection and PC's hardware capacity.  If you see any warning messages, you can safely ignore them. ***Do not close the command prompt until the process is completed***, and the command prompt has returned (with the blinking cursor visible).  When the process is completed, you can proceed to the next section to open the Jupyter Notebook server.
+
+7. Once you have completed the installation of the above packages, you will want to change the current drive and directory to the folder on your hard drive that contains the files for this tutorial copied earlier, and then launch the Jupyter Notebook server.  You can do this with the following commands (adjust the drive letter and path to the `arcgis_notebooks` folder in the first two commands as appropriate):
 
 ```sh
 D:\
@@ -111,11 +118,11 @@ cd D:\arcgis_notebooks
 jupyter notebook
 ```
 
-The last command above will launch the Jupyter web interface, and you will see a view of the contents of the `arcgis_notebooks` directory.
+The last command above will launch the Jupyter web interface in a Web browser, and you will see a view of the contents of the arcgis_notebooks directory.
 
 8. Consider enabling the table of contents extension in Jupyter by navigating to the 'Nbextensions' tab in the Jupyter web interface, and clicking the checkbox next to the 'Table of Contents (2)' item (if this checkbox is greyed-out, you may need to uncheck the option near the top labelled 'disable configuration for nbextensions without explicit compatibility').
 
-With this extension enabled, you can easily navigate within your notebooks with a table of contents that displays and synchronizes with headers in Markdown cells of your notebook.
+With the 'Table of Contents (2)' extension enabled, you can easily navigate within your notebooks using an interactive table of contents that displays and synchronizes with headers in Markdown cells of your notebook.
 
 ## Part B: Python Notebook Basics
 For this portion of the tutorial, you will start by reviewing basic aspects of the Python Notebook environment, how to compose rich text and multimedia, and how to interact with code to execute Python commands and visualize outputs.
@@ -124,14 +131,14 @@ For this portion of the tutorial, you will start by reviewing basic aspects of t
 1. Within the web interface launched at the end of the steps in Part 1 (above), navigate into the `notebook_basics` folder, and open the
 `starter_notebook.ipynb` file.
     * At this point, you may choose to open the `documents/Jupyter_Cheatsheet.pdf` document, and keep it open for reference as you work with your notebooks in the Jupyter environment.
-    * For a tour of the notebook interface, you can select ‘User Interface Tour’ in the Help menu.
+    * For a tour of the notebook interface, you can select 'User Interface Tour' in the Help menu.
 2. To start the notebook from scratch, you can choose "Restart & Clear Output" from the Kernel menu.
 3. You can follow the notebook by running code inside each code block in one of the following ways:
     * Select a cell with Python code in it and do one of the following:
-        1. Click the ‘Run’ button in the main toolbar.
+        1. Click the 'Run' button in the main toolbar.
         2. Press CTRL+Enter
         3. Press SHIFT+Enter (this automatically selects the next cell; repeat the SHIFT+Enter keystroke to execute multiple cells in sequential order)
-        4. In the main Cell menu at the top, select one of the ‘Run …’ options.
+        4. In the main Cell menu at the top, select one of the 'Run ...' options.
 
 ***Note:*** *one of the code cells in the `starter_notebook.ipynb` notebook will deliberately generate an error, so this notebook will not successfully run if you choose the 'Restart & Run All' option from the 'Kernel' menu.*
 
@@ -178,7 +185,7 @@ There are many additional examples and documentation sources available for you t
 * [Coding Standards for Jupyter Notebook](https://www.esri.com/about/newsroom/arcuser/coding-standards-for-jupyter-notebook/) 
 
 
-© 2020 Esri Canada. All rights reserved. Trademarks provided under license from Environmental Systems Research Institute Inc. Other product and company names mentioned herein may be trademarks or registered trademarks of their respective owners. Errors and omissions excepted. 
+© 2021 Esri Canada. All rights reserved. Trademarks provided under license from Environmental Systems Research Institute Inc. Other product and company names mentioned herein may be trademarks or registered trademarks of their respective owners. Errors and omissions excepted. 
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. The Education and Research Group at Esri Canada makes every effort to present accurate and reliable information. The Web sites and URLs used in this tutorial are from sources that were current at the time of production but are subject to change without notice to Esri Canada. 
 
 ![CC-BY-NC-SA-4.0](images/CC-BY-NC-SA-4.0.png "CC-BY-NC-SA-4.0")
