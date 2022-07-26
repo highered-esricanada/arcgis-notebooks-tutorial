@@ -153,9 +153,14 @@ For this portion of the tutorial, you will start by reviewing basic aspects of t
 
 ### Using ArcGIS Enterprise or ArcGIS Online:
 6. Open a web browser and login to your ArcGIS Online organization with an account has access to advanced notebooks (currently in beta for ArcGIS Online), or login to your ArcGIS Enterprise portal that has a Notebook Server enabled with it (this must be installed and configured by your ArcGIS Enterprise administrator).
-7. Navigate to the Content section, click 'Add Item' -> 'From my computer'.  In the dialog that appears, choose the `hosted_notebook.ipynb` file from the `notebook_basics` folder, enter one or more tags, and click 'Add Item'.
-8. When your notebook has been uploaded as a new item in your content, you will be taken to its details page.  Click the 'Open Notebook' button near the top of the page to launch the hosted notebook in your web browser.
-9. Follow this notebook by reading the Markdown text cells, and executing code cells as described in step 3 above, or optionally by choosing the 'Restart & Run All' option from the 'Kernel' menu.
+7. Navigate to the Content section and click 'New Item' (or 'Add Item' -> 'From my computer' for older versions of ArcGIS Enterprise).  In the dialog that appears, choose the `hosted_notebook.ipynb` file from the `notebook_basics` folder and enter one or more tags.
+8. At the bottom of the dialog, there will be a drop-down box that allows you to select which ArcGIS Notebooks runtime you want to use to run the notebook.  By default, this will be set to 'ArcGIS Notebook Python 3 Standard - [version number]'.  Change this to 'ArcGIS Notebook Python 3 **Advanced** - [version number]'.  The Advanced runtime gives you access to the ArcPy library, which is needed for this notebook.
+    * If you are running an older version of ArcGIS Enterprise and do not see this drop-down box at the bottom of the dialog, you can change the notebook runtime in the next step below.
+    * If you do not see an option for the Advanced runtime in this drop-down box, please contact your ArcGIS Online or ArcGIS Enterprise administrator.
+9. At the bottom of the dialog, click 'Save' or 'Add Item'.  When your notebook has been uploaded as a new item in your content, you will be taken to its details page.
+    * If you were not able to set the notebook runtime in the previous step, click the 'Settings' tab near the top of the details page, scroll down, and there will be a drop-down box that allows you to change the runtime.  Choose the latest version of the 'Advanced' runtime.  When finished, click the  'Overview' tab near the top of the page.
+10. Click the 'Open Notebook' button near the top of the details page to launch the hosted notebook in your web browser.
+11. Follow this notebook by reading the Markdown text cells, and executing code cells as described in step 3 above, or optionally by choosing the 'Restart & Run All' option from the 'Kernel' menu.
 
 ***Note:*** *Some of the code in this notebook includes processes that consume credits with ArcGIS Online services, and some may take a long time to execute.  If you prefer to skip any of these steps, do not choose the ‘Restart & Run All’ option from the ‘Kernel’ menu, and refer to the corresponding instructions included in the notebook.*
 
