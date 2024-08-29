@@ -33,9 +33,9 @@ The following time is required to complete this tutorial:
 ### Materials Required
 
 #### Technology:
-* *Required*: ArcGIS Pro 3.3+ recommended (2.5+ minimum)
+* *Required*: This tutorial was last tested on August 27th, 2024, using `ArcGIS Pro 3.3`. If you're using a different version of ArcGIS Pro, you may encounter different functionality and results.
 * *Recommended*: ArcGIS Online subscription account with permissions to use Notebooks and GeoEnrichment
-* *Optional*: Notebook Server for ArcGIS Enterprise 10.7.1+ ([installation guide for administrators](https://enterprise.arcgis.com/en/notebook/latest/install/windows/welcome-to-the-arcgis-notebook-server-install-guide.htm))
+* *Optional*: Notebook Server for ArcGIS Enterprise 11.3+ ([installation guide for administrators](https://enterprise.arcgis.com/en/notebook/latest/install/windows/welcome-to-the-arcgis-notebook-server-install-guide.htm))
 
 #### Data:
 * Sample data for this tutorial are included as part of the download.
@@ -47,7 +47,7 @@ The following time is required to complete this tutorial:
 ### Production Date
 The Education and Research Group at Esri Canada makes every effort to present accurate and reliable information. The Web sites and URLs used in this tutorial are from sources that were current at the time of production, but are subject to change without notice to Esri Canada.
 * Production Date: January 2022
-* Last Update: August 2024
+* Last Update Date: August 2024
 
 ## Background Information
 The Python programming language was first introduced to the ArcGIS community in 2004, with the release of ArcGIS version 9.0, as one of the scripting languages that provides access to the ArcGIS geoprocessing framework.  Since then, Python has become the language of choice for scripting and automation among ArcGIS users, and indeed many other applications.  At the same time, the ecosystem of Python libraries has continued to grow (e.g., NumPy or SciPy for advanced mathematical and scientific processing, or more specialized modules for integrating deep learning and machine learning tools such as Tensorflow).  With the introduction of the notebook interface, initially using IPython, and more recently with the Jupyter Notebook server, the Python language and specifically Python Notebooks have become highly valuable tools for data science.
@@ -87,7 +87,7 @@ The following table summarises the required folders and files provided with this
 
 ## Part A: Getting Started
 First, ensure that you have the following software installed:
-* ArcGIS Pro 2.9+ recommended (2.5+ minimum)
+* ArcGIS Pro 3.3
   * If necessary: obtain a trial copy of ArcGIS Pro (https://www.esri.com/en-us/arcgis/trial)
   * Optional: authorize ArcGIS Pro for offline use (https://pro.arcgis.com/en/pro-app/get-started/start-arcgis-pro-with-a-named-user-license.htm#ESRI_SECTION1_15AD453E27C446CE9B51D45C021E8067)
 
@@ -152,7 +152,7 @@ For this portion of the tutorial, you will start by reviewing basic aspects of t
 4. Open the `notebook_basics.aprx` project file located in the `notebook_basics` folder in ArcGIS Pro.  In the Catalog pane, expand the Folders item, then the `notebook_basics`, then right-click on the `arcgispro_notebook.ipynb` file and choose 'Add To Project'.  Expand the 'Notebooks' item in the Catalog pane, then double-click on the notebook file to open it.
 5. Once the notebook is opened in ArcGIS Pro, you can follow its workflow by executing the code cells as described in step 3 above, or optionally choose 'Restart & Run All' option from the 'Kernel' menu. Before selecting 'Restart & Run All,' ensure that the Major Crime Indicator has been added to your content, as described in "Accessing layers in an active Map" Section of the notebook. [Add Crime Indicator Data](notebook_basics/arcgispro_notebook.ipynb)
 
-***Note1:*** *If you can't view the Map and the Notebook side by side, you can dock the Jupyter Notebook next to ArcGIS Pro by dragging and aligning the windows manually.*
+***Note1:*** *If you can't view the Map and the Notebook side by side, you can dock the Notebook next to ArcGIS Pro by dragging and aligning the windows manually.*
 
 ***Note2:*** *Some of the code in this notebook includes processes that consume credits with ArcGIS Online services, and some may take a long time to execute.  If you prefer to skip any of these steps, do not choose the ‘Restart & Run All’ option from the ‘Kernel’ menu, and refer to the corresponding instructions included in the notebook.*
 
