@@ -33,20 +33,21 @@ The following time is required to complete this tutorial:
 ### Materials Required
 
 #### Technology:
-* *Required*: ArcGIS Pro 2.9+ recommended (2.5+ minimum)
+* *Required*: This tutorial was last tested on August 27th, 2024, using `ArcGIS Pro 3.3`. If you're using a different version of ArcGIS Pro, you may encounter different functionality and results.
 * *Recommended*: ArcGIS Online subscription account with permissions to use Notebooks and GeoEnrichment
-* *Optional*: Notebook Server for ArcGIS Enterprise 10.7.1+ ([installation guide for administrators](https://enterprise.arcgis.com/en/notebook/latest/install/windows/welcome-to-the-arcgis-notebook-server-install-guide.htm))
+* *Optional*: Notebook Server for ArcGIS Enterprise 11.3+ ([installation guide for administrators](https://enterprise.arcgis.com/en/notebook/latest/install/windows/welcome-to-the-arcgis-notebook-server-install-guide.htm))
 
 #### Data:
 * Sample data for this tutorial are included as part of the download.
 
 #### Data Sources
-* Toronto Police Service: Major Crime Indicators: https://data.torontopolice.on.ca/datasets/major-crime-indicators-1
+* Toronto Police Service: Major Crime Indicators: https://data.torontopolice.on.ca/pages/major-crime-indicators
 * NOAA National Centers for Environmental Information: NCDC International Best Track Archive for Climate Stewardship (IBTrACS) Project, Version 3:  https://data.nodc.noaa.gov/cgi-bin/iso?id=gov.noaa.ncdc:C00834
 
 ### Production Date
 The Education and Research Group at Esri Canada makes every effort to present accurate and reliable information. The Web sites and URLs used in this tutorial are from sources that were current at the time of production, but are subject to change without notice to Esri Canada.
 * Production Date: January 2022
+* Last Update Date: August 2024
 
 ## Background Information
 The Python programming language was first introduced to the ArcGIS community in 2004, with the release of ArcGIS version 9.0, as one of the scripting languages that provides access to the ArcGIS geoprocessing framework.  Since then, Python has become the language of choice for scripting and automation among ArcGIS users, and indeed many other applications.  At the same time, the ecosystem of Python libraries has continued to grow (e.g., NumPy or SciPy for advanced mathematical and scientific processing, or more specialized modules for integrating deep learning and machine learning tools such as Tensorflow).  With the introduction of the notebook interface, initially using IPython, and more recently with the Jupyter Notebook server, the Python language and specifically Python Notebooks have become highly valuable tools for data science.
@@ -86,17 +87,18 @@ The following table summarises the required folders and files provided with this
 
 ## Part A: Getting Started
 First, ensure that you have the following software installed:
-* ArcGIS Pro 2.9+ recommended (2.5+ minimum)
+* ArcGIS Pro 3.3
   * If necessary: obtain a trial copy of ArcGIS Pro (https://www.esri.com/en-us/arcgis/trial)
   * Optional: authorize ArcGIS Pro for offline use (https://pro.arcgis.com/en/pro-app/get-started/start-arcgis-pro-with-a-named-user-license.htm#ESRI_SECTION1_15AD453E27C446CE9B51D45C021E8067)
 
 With ArcGIS Pro installed and licensed, prepare a clone of the default Python environment installed with ArcGIS Pro. To do this use the following steps:
 1. Open the ArcGIS Pro settings (or when working on a project in Pro, click the Project tab)
-1. Select Python in the left-hand menu to access the Python Package Manger interface
-1. Click Manage Environments
-1. Click the clone button next to the default environment named arcgispro-py3, and enter a name for your new environment and click Clone in the following prompt.
-1. Wait for the clone operation to complete, ensure that your new cloned environment is set as active, and close ArcGIS Pro.
-1. Now that you have a cloned copy of the default ArcGIS Pro Python environment, you are free to modify it as you see fit.  This tutorial will make use of several packages that are not installed by default.  To install these, open the Python Command Prompt installed with ArcGIS Pro (Windows Start Menu > ArcGIS > Python Command Prompt).  When the command prompt opens, you should see the name of the Python environment you just cloned in ArcGIS Pro to the left of the cursor and current path.  Ensure your PC is connected to the Internet, execute the following command, answer 'y' when prompted to confirm the installation:
+2. Select Package Manager in the left-hand menu to access the Python Package Manger interface
+3. On the right-hand, Click the Environment Manager button ![Gear_button.png](images%2FGear_button.png), the Environment Manager dialog box appears.
+4. Click the clone button next to the default environment named arcgispro-py3, and enter a name for your new environment and click Clone in the following prompt.
+5. Wait for the clone operation to complete, ensure that your new cloned environment is set as active, and close ArcGIS Pro.
+6. Now that you have a cloned copy of the default ArcGIS Pro Python environment, you are free to modify it as you see fit.  This tutorial will make use of several packages that are not installed by default. Double-click a row representing the environment you want to activate. 
+7. To install these, open the Python Command Prompt installed with ArcGIS Pro (Windows Start Menu > ArcGIS > Python Command Prompt).  When the command prompt opens, you should see the name of the Python environment you just cloned in ArcGIS Pro to the left of the cursor and current path.  Ensure your PC is connected to the Internet, execute the following command, answer 'y' when prompted to confirm the installation:
 
 ```py
 conda install dask python-graphviz seaborn
@@ -113,7 +115,7 @@ conda install jupyter_nbextensions_configurator
 
 This installation process will take some time to complete, depending on your Internet connection and PC's hardware capacity.  If you see any warning messages, you can safely ignore them. ***Do not close the command prompt until the process is completed***, and the command prompt has returned (with the blinking cursor visible).  When the process is completed, you can proceed to the next section to open the Jupyter Notebook server.
 
-7. Once you have completed the installation of the above packages, you will want to change the current drive and directory to the folder on your hard drive that contains the files for this tutorial copied earlier.  Once in that folder, you will launch the Jupyter Notebook server.  You can do this with the following commands (adjust the drive letter and path to the `arcgis_notebooks` folder in the first two commands as appropriate):
+8. Once you have completed the installation of the above packages, you will want to lunch the Jupyter Notebook in the current drive and directory to the folder on your hard drive that contains the files for this tutorial copied earlier. You can do this with the following commands (adjust the drive letter and path to the `arcgis_notebooks` folder in the first two commands as appropriate):
 
 ```sh
 D:\
@@ -133,6 +135,7 @@ For this portion of the tutorial, you will start by reviewing basic aspects of t
 ### Using the Jupyter Notebook Web interface:
 1. Within the web interface launched at the end of the steps in Part 1 (above), navigate into the `notebook_basics` folder, and open the
 `starter_notebook.ipynb` file.
+***Note:*** You can always show or hide it by clicking on the table of content icon located in the menu bar on the top of the webpage.
     * At this point, you may choose to open the `documents/Jupyter_Cheatsheet.pdf` document, and keep it open for reference as you work with your notebooks in the Jupyter environment.
     * For a tour of the notebook interface, you can select 'User Interface Tour' in the Help menu.
 2. To start the notebook from scratch, you can choose "Restart & Clear Output" from the Kernel menu.
@@ -147,13 +150,15 @@ For this portion of the tutorial, you will start by reviewing basic aspects of t
 
 ### Using ArcGIS Pro:
 4. Open the `notebook_basics.aprx` project file located in the `notebook_basics` folder in ArcGIS Pro.  In the Catalog pane, expand the Folders item, then the `notebook_basics`, then right-click on the `arcgispro_notebook.ipynb` file and choose 'Add To Project'.  Expand the 'Notebooks' item in the Catalog pane, then double-click on the notebook file to open it.
-5. Once the notebook is opened in ArcGIS Pro, you can follow its workflow by executing the code cells as described in step 3 above, or optionally choose 'Restart & Run All' option from the 'Kernel' menu.
+5. Once the notebook is opened in ArcGIS Pro, you can follow its workflow by executing the code cells as described in step 3 above, or optionally choose 'Restart & Run All' option from the 'Kernel' menu. Before selecting 'Restart & Run All,' ensure that the Major Crime Indicator has been added to your content, as described in "Accessing layers in an active Map" Section of the notebook. [Add Crime Indicator Data](notebook_basics/arcgispro_notebook.ipynb)
 
-***Note:*** *Some of the code in this notebook includes processes that consume credits with ArcGIS Online services, and some may take a long time to execute.  If you prefer to skip any of these steps, do not choose the ‘Restart & Run All’ option from the ‘Kernel’ menu, and refer to the corresponding instructions included in the notebook.*
+***Note1:*** *If you can't view the Map and the Notebook side by side, you can dock the Notebook next to ArcGIS Pro by dragging and aligning the windows manually.*
+
+***Note2:*** *Some of the code in this notebook includes processes that consume credits with ArcGIS Online services, and some may take a long time to execute.  If you prefer to skip any of these steps, do not choose the ‘Restart & Run All’ option from the ‘Kernel’ menu, and refer to the corresponding instructions included in the notebook.*
 
 ### Using ArcGIS Enterprise or ArcGIS Online:
 6. Open a web browser and login to your ArcGIS Online organization with an account has access to advanced notebooks (currently in beta for ArcGIS Online), or login to your ArcGIS Enterprise portal that has a Notebook Server enabled with it (this must be installed and configured by your ArcGIS Enterprise administrator).
-7. Navigate to the Content section and click 'New Item' (or 'Add Item' -> 'From my computer' for older versions of ArcGIS Enterprise).  In the dialog that appears, choose the `hosted_notebook.ipynb` file from the `notebook_basics` folder and enter one or more tags.
+7. Navigate to the Content section and click 'New Item' (or 'Add Item' -> 'From my computer' for older versions of ArcGIS Enterprise).  In the dialog that appears drag and drop the the `hosted_notebook.ipynb` file from the `notebook_basics` folder and enter one or more tags.
 8. At the bottom of the dialog, there will be a drop-down box that allows you to select which ArcGIS Notebooks runtime you want to use to run the notebook.  By default, this will be set to 'ArcGIS Notebook Python 3 Standard - [version number]'.  Change this to 'ArcGIS Notebook Python 3 **Advanced** - [version number]'.  The Advanced runtime gives you access to the ArcPy library, which is needed for this notebook.
     * If you are running an older version of ArcGIS Enterprise and do not see this drop-down box at the bottom of the dialog, you can change the notebook runtime in the next step below.
     * If you do not see an option for the Advanced runtime in this drop-down box, please contact your ArcGIS Online or ArcGIS Enterprise administrator.
